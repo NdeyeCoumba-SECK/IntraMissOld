@@ -1,0 +1,3 @@
+ressource_project:
+    path:     /new
+    defaults: { _controller: RessourceBundle:Default:newProject }

@@ -1,0 +1,55 @@
+ <hr style="margin-top: 0px; margin-bottom: 11px"/>
+<section class="row">
+    <div class="col-sm-8">
+        <address> Etat des Perdiemes à la date du 
+            <span style="color: #006666; font-size: medium">{{ date|date("d/m/Y") }} </span> 
+        </address>
+    </div>
+    <div class="col-sm-4">
+        <form class="datePerdiem" >
+            <input type="date" name="datePerdiem" required="true"> 
+            <input type="submit" value="ok">
+        </form>
+    </div>
+</section>
+        <hr style="margin-top: 0px"/>
+ 
+<table class="table table-striped table-bordered table-hover table-condensed">
+              <tr> 
+                  <th>DAS ID</th>  <th>Ref. Projet</th> <th>Ville</th> <th>Date Départ</th> <th>Unité</th>
+                  <th>Jrs / Mois Courant</th> <th>Mnt / Mois Courant</th>
+                  <th>Jours</th> <th>Montant</th>
+                  <th>
+                    <form class="formModifFee" method="post" action="{{ path('gm_projet_dsms_perdiem_export_tout') }}">
+                         <input type="hidden" name="date" value="{{ date|date("d-m-Y") }}">
+                         <button class="btn tout" type="submit" title="Exporter tout Excel" style="background-color: inherit">
+                           <i class="fa fa-download" aria-hidden="true"></i>
+                         </button>
+                    </form>
+                 </th>
+              </tr>
+            {% for dossier in dossiers%}
+                <tr>
+                    <td> {{dossier.collaborateur.user}}</td>
+                    <td> {{dossier.projet.reference}}</td>
+                    <td> {{dossier.ville}}</td>
+                    <td> {{dossier.dateDepart| date('d-m-y')}}</td>
+                    <td> 40 &euro;</td>
+                    <td align="center"> {{nbrjM[dossier.collaborateur.id]}} </td>
+                    <td align="center"> {{nbrjM[dossier.collaborateur.id]*40}} &euro;</td>
+                    <td align="center"> {{nbrjT[dossier.collaborateur.id]}}</td>
+                    <td align="center"> {{nbrjT[dossier.collaborateur.id]*40}} &euro;</td>
+                    <td>
+                     <form class="" method="post" action="{{ path('gm_projet_dsms_perdiem_export') }}">
+                         <input type="hidden" name="id" value="{{dossier.id}}">
+                         <input type="hidden" name="nbrjT" value="{{nbrjT[dossier.collaborateur.id]}}">
+                         <input type="hidden" name="nbrjM" value="{{nbrjM[dossier.collaborateur.id]}}">
+                         <input type="hidden" name="date" value="{{ date|date("d/m/Y") }}">
+                         <button class="btn" type="submit" title="Exporter Excel" style="background-color: inherit">
+                              <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                         </button>
+                     </form>
+                </td>
+                </tr>
+            {% endfor %}
+  </table>

@@ -1,0 +1,51 @@
+footer{margin-top: 100px; height: 130px; background-color:#f0f0f0; padding-top: 35px}
+h2{text-align:center }
+a{display: block; text-align: center; text-decoration: none; }
+.ligne1{ height: 19px; background-color: #f0f0f0}
+.ligne2{ height: 5px; background-color: #08C; margin-bottom: 5px}
+.ligne{ height: 3px; background-color: #08C; }
+.recharge{width: 100px; position: fixed; top: 197px; display: none;}
+.recharge div {width: 60px; margin-left: 19px; background-color: #DDD; border-radius: 5px; padding-top: 3px; padding-bottom:3px}
+a:hover {text-decoration: none; }  
+a:hover .lien {border-bottom: 3px solid; } 
+header{padding-left: 15px; padding-right: 15px}
+
+.corps{padding-left: 20px; margin-top: 29px}
+#divProfile{display: none; margin-top:25px; padding: 0px }
+#divNewUser{display: none; margin-top:25px}  
+#divAutre{display: none; margin-top:25px }
+#divNewProject{display: block; margin-top:20px; }
+#divImportProject{display: none; margin-top:20px; }
+#divProjectStatus{display: none; margin-top:25px; padding: 0px}
+#divReceivedProject{display: block; margin-top:25px; padding: 0px}
+#divAssist{display: none; margin-top:25px; padding: 0px }
+#divColabMission{display: none; margin-top:25px; padding: 0px }
+#divFees{display: none; margin-top:25px; padding: 0px }
+#divPerdieme{display: none; margin-top:25px; padding: 0px }
+#divMyDocument{display: none; margin-top:25px; padding: 0px }
+#divMyComments{display: none; margin-top:25px; padding: 0px }
+
+#popup{position: fixed; top: 100px; left: 160px;width: 940px; background-color: #F5F5F5; 
+       border: 1px solid #5eb5e0 ;display: none;
+       min-height: 250px;z-index: 2;
+       border-radius: 9px; min-height: 510px;
+}
+
+.logoAtos img{height: 100%; width: 100%}
+
+.icons{display: block; background-color: #5eb5e0; width: 45px; height: 45px; margin: 0 auto; padding: 13px;
+       border-radius: 9px}
+
+.icons span,.icons i{color: white}
+.lien{color: black; padding-bottom: 2px; }
+.panel-default{height: 200px; margin-top:20px;z-index: 1}
+
+.menuDG td {width: 33.3%}
+.menuARH td {width: 16%}
+
+.formFee {display: none;}
+.formFee .table th, .formFee .table td { 
+     border-top: none !important; 
+ }
+
+.piece {max-width: 900px;max-height: 470px}

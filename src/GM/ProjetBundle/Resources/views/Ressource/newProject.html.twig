@@ -1,0 +1,74 @@
+{{ form_start(form, {'method': 'post', 'action': path('gm_projet_new_project'), 'attr': { 'class': 'gm_projet_new_project form-horizontal' } }) }}
+ 
+    <div class="row">
+        <div class="form-group">
+          <label for="reference" class="col-sm-2 control-label"> {{form_label(form.reference)}}</label>
+          <div class="col-sm-9">
+            {{ form_widget(form.reference , {'attr': {'class': 'form-control focus', 'autofocus':'autofocus'} } )}}
+          </div>
+        </div>
+    </div>
+          
+    
+    <div class="row">
+        <div class="form-group">
+          <label for="intitule" class="col-sm-2 control-label"> {{form_label(form.intitule)}}</label>
+          <div class="col-sm-9">
+            {{ form_widget(form.intitule , {'attr': {'class': 'form-control'} } )}}
+          </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="form-group">
+          <label for="annonceur" class="col-sm-2 control-label"> {{form_label(form.annonceur)}}</label>
+          <div class="col-sm-9">
+            {{ form_widget(form.annonceur , {'attr': {'class': 'form-control'} })}}
+          </div>
+        </div>
+    </div>
+    
+     <div class="row">
+        <div class="form-group">
+          <label for="lieu" class="col-sm-2 control-label"> {{form_label(form.lieu)}}</label>
+          <div class="col-sm-9">
+            {{ form_widget(form.lieu , {'attr': {'class': 'form-control'} } )}}
+          </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="form-group">
+          <label for="duree" class="col-sm-2 control-label"> {{form_label(form.duree)}}</label>
+          <div class="col-sm-9">
+            {{ form_widget(form.duree , {'attr': {'class': 'form-control'} } )}}
+          </div>
+        </div>
+    </div>
+    
+     <div class="row">
+        <div class="form-group">
+          <label for="profil" class="col-sm-2 control-label"> {{form_label(form.profil)}}</label>
+          <div class="col-sm-9">
+            {{ form_widget(form.profil , {'attr': {'class': 'form-control'} } )}}
+          </div>
+        </div>
+    </div>
+    
+     <div class="row">
+        <div class="form-group">
+          <label for="description" class="col-sm-2 control-label"> {{form_label(form.description)}}</label>
+          <div class="col-sm-9">
+            {{ form_widget(form.description , {'attr': {'class': 'form-control'} } )}}
+          </div>
+        </div>
+    </div>
+   
+    <div class="row">
+         <div class="col-sm-7 col-sm-offset-2 results"> </div>
+         <div class="col-sm-2 col-sm-offset-9">
+           <input type="submit" value="Post" class="form-control btn btn-success" />
+         </div>
+   </div>
+{{ form_end(form) }}
+

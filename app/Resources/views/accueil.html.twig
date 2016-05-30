@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            
+           <link href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+           <link href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+           <link href="{{ asset('css/styleEspace.css') }}" type="text/css" rel="stylesheet" />
+           
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            
+           <section class="row" >
+               <div class="col-sm-1 recharge" >
+                      <div >
+                              <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i>
+                              <span class="sr-only">Loading...</span>
+                      </div>
+               </div>
+           </section>
+            
+            
+          <section class="row">
+              <div class="ligne1 col-sm-12"> </div>
+              <div class="ligne2 col-sm-12"> </div>
+          </section>
+            
+          <header class="row">         
+            <div class="col-sm-4 logoAtos" > 
+              <section class="row">
+                <div class="col-sm-3" style="height: 50px"> <img src="{{ asset('images/logo.png') }}"> </div>
+                <div class="col-sm-9" style="height: 50px;"> <h4>Landeds <br/>Ressources </h4> </div>
+              </section>
+            </div>
+            
+            <div class="col-sm-4" style="text-align: center" > 
+                 <h5> <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    </a>
+                 </h5>
+            </div>
+            
+             <div class="col-sm-4" style="text-align: right"> 
+                 <h5>Welcome {% if (app.user.nom) %} {{app.user.nom}} {{app.user.prenom}}{% else %} {{app.user.username}} {% endif %}  </h5>
+            </div>
+            
+          </header>
+           <hr/>
+
+        {% endblock %}
+        <footer class="row"> 
+            <div class="col-sm-11 col-sm-offset-1"> <a href="https://www.myatos.net" style="text-align: left; margin-bottom: 15px">My Atos </a></div>
+            <div class="col-sm-11 col-sm-offset-1">
+                <address>  For internal use. Atos S.E. 2016 all rights reserved Reproduction in whole or in part is prohibited without the written consent of Atos S.E. </address> 
+            </div>
+        </footer>
+        {% block javascripts %}
+         <script src="{{ asset('js/jquery.min.js') }}"></script>
+         <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js') }}"></script>
+        
+          
+            <script >
+             $(function(){
+                    $('.lien1').css({'borderBottom':'3px solid'});
+                    
+                    $( "#profile" ).click(function() {
+
+                        $('#divProfile').css({'display':'block'}); 
+                        $('#divNewUser').css({'display':'none'});
+                        $('#divAutre').css({'display':'none'});
+                        $('#divNewProject').css({'display':'none'});
+                        $('#divProjectStatus').css({'display':'none'});
+                        $('#divReceivedProject').css({'display':'none'});
+                        $('.titre').text($(this).text());
+                        $('.lien3').css({'borderBottom':'3px solid'});
+                        $('.lien1, .lien2').css({'borderBottom':'0px solid'});
+                     });
+                        
+                     
+                   //************* Profile *****************  
+                    $( ".fos_user_profile_edit" ).submit(function(e) {
+                      e.preventDefault();
+                      //var donnees = $(this).serialize();
+                       var values = {};
+                      $('.fos_user_profile_edit').serializeArray().forEach(function (field) {
+                          values[field.name] = field.value;
+                      });
+
+                            $.ajax({
+                            url: "{{ path('fos_user_profile_edit') }}",
+                            data: values,
+                            type: 'post'
+                            }).done(function (data) {
+                                $(".results").html("<h3>Successful.</h3>");
+                                /*setTimeout(function () {
+                                    window.location.reload(1);
+                                }, 2000);*/
+                            }).fail(function (data) {
+                                var newHTML = $.map(data.responseJSON.message, function (value) {
+                                    return ('<li>' + value + '</li>');
+                                });
+                                $(".results").html(newHTML);
+                            });
+
+                    });
+                    
+                    //************* Password *****************  
+                    $( ".fos_user_change_password" ).submit(function(e) {
+
+                        e.preventDefault();
+                        //var donnees = $(this).serialize();
+                         var val1, val2,i=0; 
+                         var values = {};
+                        $('.fos_user_change_password').serializeArray().forEach(function (field) {
+                            values[field.name] = field.value;
+
+                              if (i===0) { val1=field.value; i++;}
+                               else if(i===1)  {val2=field.value; i++; }
+                        });
+
+                        if (val1===val2)
+                        {
+                            $.ajax({
+
+                              type: "POST",
+                              url: "{{ path('fos_user_change_password') }}",
+                              data: values,
+                              dataType: "text",
+                              success: function(result){
+                              $(".passwordResult").text("succes"); 
+                              }
+                           }); 
+                        }
+                        else {$(".passwordResult").text("Mot de passe different");}
+                       
+                    });
+
+              });     
+            
+    </script>
+        {% endblock %}
+    </body>
+</html>

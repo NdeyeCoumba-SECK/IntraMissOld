@@ -1,0 +1,17 @@
+{{ form_start(form, {'method': 'post','attr': { 'class': 'form-horizontal' } }) }}
+  <div class="row">
+          <div class="col-sm-6">
+            {{ form_widget(form.file, {'attr': {'class': 'form-control'} } )}}
+          </div>
+          <div class="col-sm-3">
+            {{ form_widget(form.submitFile, {'attr': {'class': 'form-control'} } )}}
+          </div>
+   </div>
+    
+{{ form_end(form) }}
+
+ <div class="row" style="margin-top: 15px">
+          <div class="col-sm-7 results">
+            
+          </div>
+ </div>

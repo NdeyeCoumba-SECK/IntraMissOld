@@ -1,0 +1,22 @@
+ body{}
+ .connexion{margin-top: 100px}
+ .logoAtos{height: 65px; margin-bottom: 30px;padding-left: 40px;}
+ .forms h4{text-align: center; margin-top: 45px; margin-bottom: 45px; color:white}
+ 
+ .forms { background-color: lightgreen;
+  border-radius: 7px;
+  background-color: #5eb5e0; padding-left: 40px; padding-right: 40px
+ }
+ .forms form{margin-bottom: 50px}
+ .forms span{background-color : white}
+ .logoAtos img{height: 100%; width: 100%}
+ 
+  .erreurs{
+     border-radius: 5px;
+     background-color: #fc9272; height: 40px; text-align: center; margin-bottom: 30px;padding-top: 10px;padding-bottom: 10px
+  }
+ /*.forms{width:350px; border-radius: 7px; background-color: #e5f5f9; padding: 40px}
+.connexion .forms input{width: 320px; height: 30px; display: block; margin-bottom: 30px; }
+.erreurs {border-radius: 5px; width: 420px; background-color: #fc9272; height: 30px; text-align: center; margin-bottom: 30px; padding-top: 10px}
+.forms h5{text-align: center}
+.forms a {text-decoration:none}*/

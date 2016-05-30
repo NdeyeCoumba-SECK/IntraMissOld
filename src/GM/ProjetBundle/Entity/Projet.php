@@ -1,0 +1,391 @@
+<?php
+namespace GM\ProjetBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * Projet
+ *
+ * @ORM\Table(name="projet")
+ * @ORM\Entity(repositoryClass="GM\ProjetBundle\Repository\ProjetRepository")
+ */
+class Projet
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string", length=25, unique=true)
+     */
+    private $reference;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intitule",  type="string", length=50)
+     */
+    private $intitule;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datePublication", type="datetime")
+     *
+     */
+    private $datePublication;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="annonceur", type="string", length=50)
+     */
+    private $annonceur;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="duree", type="integer")
+     */
+    private $duree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu", type="string", length=50)
+     */
+    private $lieu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profil", type="string", length=50)
+     */
+    private $profil;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string",length=50, nullable=true)
+     */
+    private $etat;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param integer $reference
+     *
+     * @return Projet
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return int
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set intitule
+     *
+     * @param string $intitule
+     *
+     * @return Projet
+     */
+    public function setIntitule($intitule)
+    {
+        $this->intitule = $intitule;
+
+        return $this;
+    }
+
+    /**
+     * Get intitule
+     *
+     * @return string
+     */
+    public function getIntitule()
+    {
+        return $this->intitule;
+    }
+
+    /**
+     * Set datePublication
+     *
+     * @param \DateTime $datePublication
+     *
+     * @return Projet
+     */
+    public function setDatePublication($datePublication)
+    {
+        $this->datePublication = $datePublication;
+
+        return $this;
+    }
+
+    /**
+     * Get datePublication
+     *
+     * @return \DateTime
+     */
+    public function getDatePublication()
+    {
+        return $this->datePublication;
+    }
+
+    /**
+     * Set annonceur
+     *
+     * @param string $annonceur
+     *
+     * @return Projet
+     */
+    public function setAnnonceur($annonceur)
+    {
+        $this->annonceur = $annonceur;
+
+        return $this;
+    }
+
+    /**
+     * Get annonceur
+     *
+     * @return string
+     */
+    public function getAnnonceur()
+    {
+        return $this->annonceur;
+    }
+
+    /**
+     * Set duree
+     *
+     * @param string $duree
+     *
+     * @return Projet
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return string
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * Set lieu
+     *
+     * @param string $lieu
+     *
+     * @return Projet
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    /**
+     * Get lieu
+     *
+     * @return string
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * Set profil
+     *
+     * @param string $profil
+     *
+     * @return Projet
+     */
+    public function setProfil($profil)
+    {
+        $this->profil = $profil;
+
+        return $this;
+    }
+
+    /**
+     * Get profil
+     *
+     * @return string
+     */
+    public function getProfil()
+    {
+        return $this->profil;
+    }
+    
+    
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Projet
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+    
+     /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    
+     /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Projet
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+    
+     /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+    
+    
+    //*******************   Collab
+    
+      /**
+     * @ORM\ManyToMany(targetEntity="GM\ProjetBundle\Entity\Collaborateur", inversedBy="projets", cascade={"persist"})
+     * @ORM\JoinTable(name="projet_collaborateur")
+     */
+        private $collaborateurs;
+        
+         public function __construct()
+        {
+          $this->collaborateurs =  new \Doctrine\Common\Collections\ArrayCollection();
+        }
+
+          public function addCollaborateur(Collaborateur $collaborateur)
+         {
+           // Ici, on utilise l'ArrayCollection vraiment comme un tableau
+            $this->collaborateurs[] = $collaborateur;
+
+            return $this;
+         }
+         
+          public function removeCollaborateur(Collaborateur $collaborateur)
+            {
+              // Ici on utilise une méthode de l'ArrayCollection, pour supprimer la catégorie en argument
+              $this->collaborateurs->removeElement($collaborateur);
+            }
+            
+          public function getCollaborateurs()
+            {
+              return $this->collaborateurs;
+            }
+            
+            
+         
+    // ************************
+    
+    /**
+     * @ORM\OneToMany(targetEntity="GM\ProjetBundle\Entity\DossierMissions", mappedBy="projet", cascade={"persist"})
+     */
+     private $projetColab;
+
+
+    
+
+    /**
+     * Add projetColab
+     *
+     * @param \GM\ProjetBundle\Entity\DossierMissions $projetColab
+     *
+     * @return Projet
+     */
+    public function addProjetColab(\GM\ProjetBundle\Entity\DossierMissions $projetColab)
+    {
+        $this->projetColab[] = $projetColab;
+
+        return $this;
+    }
+
+    /**
+     * Remove projetColab
+     *
+     * @param \GM\ProjetBundle\Entity\DossierMissions $projetColab
+     */
+    public function removeProjetColab(\GM\ProjetBundle\Entity\DossierMissions $projetColab)
+    {
+        $this->projetColab->removeElement($projetColab);
+    }
+
+    /**
+     * Get projetColab
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjetColab()
+    {
+        return $this->projetColab;
+    }
+}

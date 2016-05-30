@@ -1,0 +1,82 @@
+  <section>
+      <legend>Projet</legend>
+      <table class="table table-striped table-condensed">
+         <tr>
+             <th>Reference : </th> <td> {{projet.reference}}</td> <th>Annonceur : </th> <td> {{projet.annonceur}}</td>
+             <th>Intitulé : </th> <td> {{projet.intitule}}</td> 
+         </tr>
+         <tr>
+             <th>Lieu : </th> <td> {{projet.lieu}}</td>
+             <th>Date de publication : </th> <td> {{projet.datePublication | date('d-m-y')}}</td>
+             <th>Durrée : </th> <td> {{projet.duree}}</td>
+         </tr>
+         <tr>
+             <th>Profile : </th> <td> {{projet.profil}}</td> 
+             <th>Description : </th> <td colspan="3"> {{projet.description}}</td>
+         </tr> 
+        </table> 
+    </section> 
+    
+  
+   
+         <section class="row" style="margin-top: 25px">
+       
+       <div class="col-sm-5">
+          <legend>Collaborateur</legend>
+          <table class="table table-striped table-condensed">
+            
+             <tr> <th>DAS ID</th> <td>{{collaborateur.user}}</td> </tr>
+             <tr> <th>Nom</th> <td>{{collaborateur.nom}}</td> </tr>
+             <tr> <th>Prénom</th> <td>{{collaborateur.prenom}}</td> </tr>
+             <tr> <th>E-mail</th> <td>{{collaborateur.email}}</td> </tr>
+ 
+          </table> 
+       </div>
+       <div class="col-sm-6">
+           <div class="panel panel-default" style="height: 210px">
+          <div class="panel-body" > 
+                   
+           {{ form_start(form, {'method': 'post', 'action': path('gm_projet_suivi_candidature'), 'attr': { 'class': 'form-horizontal cand' } }) }}
+                <div class="row">
+                    <div class="form-group">
+                      <label for="candidature" class="col-sm-3 control-label"> {{form_label(form.candidature)}}</label>
+                      <div class="col-sm-8">
+                        {{ form_widget(form.candidature , {'attr': {'class': 'form-control choix', 'name':'essai'} } )}}
+                      </div>
+                    </div>
+                </div>
+                      
+                 <div class="row">
+                    <div class="form-group">
+                      <label for="date depart" class="col-sm-3 control-label"> {{form_label(form.dateDepart)}}</label>
+                      <div class="col-sm-8">
+                        {{ form_widget(form.dateDepart , {'attr': {'class': 'form-control c1'} })}}
+                      </div>
+                    </div>
+                </div>
+                      
+                 <div class="row">
+                    <div class="form-group">
+                      <label for="duree" class="col-sm-3 control-label"> {{form_label(form.duree)}}</label>
+                      <div class="col-sm-8">
+                        {{ form_widget(form.duree , {'attr': {'class': 'form-control c2'} } )}}
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                       <div class="col-sm-8 results"> </div>
+                       <div class="col-sm-3 ">
+                         <input type="submit" value="Valider" class="form-control btn btn-success" />
+                       </div>
+                 </div>
+                <input type="hidden" name="idProjet" value="{{projet.id}}">
+                <input type="hidden" name="idCollab" value="{{collaborateur.id}}">
+             {{ form_end(form) }}
+          
+          </div>      
+         </div>
+       </div>
+    </section> 
+    
+    

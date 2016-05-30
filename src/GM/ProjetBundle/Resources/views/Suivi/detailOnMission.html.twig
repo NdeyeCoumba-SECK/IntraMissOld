@@ -1,0 +1,50 @@
+  <section>
+      <legend>Projet</legend>
+      <table class="table table-striped table-condensed">
+         <tr>
+             <th>Reference : </th> <td> {{dossier.projet.reference}}</td> <th>Annonceur : </th> <td> {{dossier.projet.annonceur}}</td>
+             <th>Intitulé : </th> <td> {{dossier.projet.intitule}}</td> 
+         </tr>
+         <tr>
+             <th>Lieu : </th> <td> {{dossier.projet.lieu}}</td>
+             <th>Date de publication : </th> <td> {{dossier.projet.datePublication | date('d-m-y')}}</td>
+             <th>Durrée : </th> <td> {{dossier.projet.duree}}</td>
+         </tr>
+         <tr>
+             <th>Profile : </th> <td> {{dossier.projet.profil}}</td> 
+             <th>Description : </th> <td colspan="3"> {{dossier.projet.description}}</td>
+         </tr> 
+        </table> 
+    </section> 
+    
+  
+   
+  <section class="row" style="margin-top: 50px">
+       
+       <div class="col-sm-5">
+          <legend>Collaborateur</legend>
+          <table class="table table-striped table-condensed">
+            
+             <tr> <th>DAS ID</th> <td>{{dossier.collaborateur.user}}</td> </tr>
+             <tr> <th>Nom</th> <td>{{dossier.collaborateur.nom}}</td> </tr>
+             <tr> <th>Prénom</th> <td>{{dossier.collaborateur.prenom}}</td> </tr>
+             <tr> <th>E-mail</th> <td>{{dossier.collaborateur.email}}</td> </tr>
+ 
+          </table> 
+       </div>
+       <div class="col-sm-6 ">
+           <legend>Mission</legend>
+           <table class="table table-striped table-condensed">
+            
+             <tr> <th>Date Depart</th> <td>{{dossier.dateDepart | date('d-m-y')}}</td> </tr>
+             <tr> <th>Durée Mission</th> <td>{{dossier.duree}} mois</td> </tr>
+             <tr> <th>Ville</th> <td>{{dossier.ville}}</td> </tr>
+             <tr> <th>Hotel</th> <td>{{dossier.hotel}}</td> </tr>
+             <tr> <th>Fonction</th> <td>{{dossier.fonction}}</td> </tr>
+             <tr> <th>Chef Projet</th> <td>{{dossier.chefProjet}}</td> </tr>
+ 
+          </table> 
+       </div>
+    </section> 
+    
+    

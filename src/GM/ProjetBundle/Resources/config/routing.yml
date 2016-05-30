@@ -1,0 +1,155 @@
+gm_projet_homepage:
+    path:     /
+    defaults: { _controller: GMProjetBundle:Default:index }
+        
+        
+gm_projet_ajout:
+    path:    /AjoutFrais
+    defaults:
+        _controller: GMProjetBundle:Depense:ajoutfrais
+
+gm_projet_liste:
+    path:    /ListeFrais
+    defaults:
+        _controller: GMProjetBundle:Depense:listefrais
+
+gm_projet_modification:
+    path:    /ModificationFrais
+    defaults:
+        _controller: GMProjetBundle:Depense:modificationfrais
+        
+gm_projet_suppression:
+    path:    /SuppressionFrais/{id}
+    defaults:
+        _controller: GMProjetBundle:Depense:suppressionfrais
+
+gm_projet_new_project:
+    path:    /new
+    defaults:
+        _controller: GMProjetBundle:Ressource:newProject
+
+gm_projet_list_project:
+    path:    /listeProjet
+    defaults:
+        _controller: GMProjetBundle:Ressource:listeProjet
+
+gm_projet_project_status:
+    path:    /projectStatus
+    defaults:
+        _controller: GMProjetBundle:Ressource:projectStatus
+
+gm_projet_received_project:
+    path:    /receivedProject
+    defaults:
+        _controller: GMProjetBundle:Ressource:receivedProject
+
+gm_projet_positioned_project:
+    path:    /positioned
+    defaults:
+        _controller: GMProjetBundle:Ressource:positioned
+
+gm_projet_ressource_project:
+    path:    /ressource
+    defaults:
+        _controller: GMProjetBundle:Ressource:ressource
+
+gm_projet_detail_project:
+    path:    /detailProjet
+    defaults:
+        _controller: GMProjetBundle:Ressource:detailProjet
+
+gm_projet_ressource_affectation:
+    path:    /affectationRessource
+    defaults:
+        _controller: GMProjetBundle:Ressource:affectation
+
+
+gm_projet_update_projects:
+    path:    /updateProjects
+    defaults:
+        _controller: GMProjetBundle:Dsms:updateProjects
+
+gm_projet_update_excel:
+    path:    /excel
+    defaults:
+        _controller: GMProjetBundle:Dsms:excel
+
+gm_projet_update_date:
+    path:    /excel
+    defaults:
+        _controller: GMProjetBundle:Dsms:date
+        
+gm_projet_suivi_assist:
+    path:    /assist
+    defaults:
+        _controller: GMProjetBundle:Suivi:assist
+
+gm_projet_suivi_infoColab:
+    path:    /infoColab
+    defaults:
+        _controller: GMProjetBundle:Suivi:infoCollaborateur
+
+gm_projet_suivi_candidature:
+    path:    /candidature
+    defaults:
+        _controller: GMProjetBundle:Suivi:candidature
+
+gm_projet_suivi_on_mission:
+    path:    /onMission
+    defaults:
+        _controller: GMProjetBundle:Suivi:onMission
+
+gm_projet_suivi_on_mission_detail:
+    path:    /dtailOnMission
+    defaults:
+        _controller: GMProjetBundle:Suivi:dtailOnMission
+
+gm_projet_suivi_mydocument:
+    path:    /mydocument
+    defaults:
+        _controller: GMProjetBundle:Suivi:mydocument
+
+gm_projet_suivi_savemydocument:
+    path:    /savemydocument
+    defaults:
+        _controller: GMProjetBundle:Suivi:savemydocument
+
+gm_projet_suivi_frais_colabs:
+    path:    /fraisColabs
+    defaults:
+        _controller: GMProjetBundle:Suivi:fraisColabs
+
+gm_projet_suivi_frais_colab:
+    path:    /fraisColab
+    defaults:
+        _controller: GMProjetBundle:Suivi:fraisParColab
+ 
+gm_projet_suivi_frais_valider:
+    path:    /validerFrais
+    defaults:
+        _controller: GMProjetBundle:Suivi:validerFrais
+
+gm_projet_suivi_export:
+    path:    /export
+    defaults:
+        _controller: GMProjetBundle:Suivi:exportFrais
+
+gm_projet_suivi_export_tout:
+    path:    /exportTout
+    defaults:
+        _controller: GMProjetBundle:Suivi:exportTout
+
+gm_projet_dsms_perdiem:
+    path:    /perdiem
+    defaults:
+        _controller: GMProjetBundle:Dsms:perdiem
+
+gm_projet_dsms_perdiem_export:
+    path:    /exportPerdiem
+    defaults:
+        _controller: GMProjetBundle:Dsms:exportPerdiem
+
+gm_projet_dsms_perdiem_export_tout:
+    path:    /exportToutPerdiem
+    defaults:
+        _controller: GMProjetBundle:Dsms:exportToutPerdiem

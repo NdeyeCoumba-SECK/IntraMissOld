@@ -1,0 +1,31 @@
+  <section>
+       
+         <table  class="table table-striped table-hover table-condensed">
+              <tr> <th>DAS ID</th> <th>Nom</th>  <th>Prénom</th>  <th>Ref. Projet</th> <th>Date Depart</th> <th>Ville</th> <th></th></tr>
+            {% for dossier in dossierMissions%}
+                <tr>
+                    <td> {{dossier.collaborateur.user}} </td>
+                    <td> {{dossier.collaborateur.nom}} </td>
+                    <td> {{dossier.collaborateur.prenom}} </td>
+                    <td> {{dossier.projet.reference}} </td>
+                    <td> {{dossier.dateDepart | date('d-m-y')}}</td>
+                    <td> {{dossier.ville}}</td>
+                    <td align="center"> 
+                     <form class="formFrais" method="post"  action ="{{ path('gm_projet_suivi_frais_colab') }}">
+                            <input type="hidden" name="idProjet" value="{{dossier.projet.id}}">
+                            <input type="hidden" name="idCollab" value="{{dossier.collaborateur.id}}">
+                            <button class="btn" type="submit" style="background-color: inherit" title="Frais Collaborateur"> 
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                            </button>
+                      </form>
+                    </td>
+                   
+                </tr>
+            {% endfor %}
+          </table> 
+        
+     
+    </section> 
+
+
+       

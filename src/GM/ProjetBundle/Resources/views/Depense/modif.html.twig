@@ -1,0 +1,45 @@
+<div class="panel-body" > 
+ {{form_start(f, {'method': 'post', 'enctype': 'multipart/form-data', 'action': path('gm_projet_ajout'), 'attr': { 'class': 'form-horizontal modifFee' } })}}
+    <table class="table table-condensed" >
+                  <tr>
+                    <td> Designation</td>
+                    <td> {{form_widget(f.designation, {'attr': {'class': 'form-control',  'autofocus':'autofocus'} })}} </td>
+                    <td align="center"> Montant</td>
+                    <td> 
+                       <section class="row">
+                          <div class="col-sm-8">
+                              {{form_widget(f.montant, {'attr': {'class': 'form-control'} })}}
+                          </div>
+                           <div class="col-sm-4">
+                              {{form_widget(f.unite, {'attr': {'class': 'form-control'} })}} 
+                          </div>
+                      </section>  
+                    </td>
+                  </tr>
+                  <tr>
+                    <td> Date</td>
+                    <td> {{form_widget(f.date, {'attr': {'class': 'form-control'} })}} </td>
+                    <td align="center"> Pièce</td>
+                    <td> {{form_widget(f.piece, {'attr': {'class': 'form-control'} })}} </td>
+                  </tr>
+                   <tr>
+                    <td> Description</td>
+                    <td> {{form_widget(f.infoCom, {'attr': {'class': 'form-control'} })}} </td>
+                    <td> </td>
+                    <td style="vertical-align: bottom">
+                        <input type="submit" value="Enregistrer" class="btn btn-success" />
+                        <span class="results"> </span>
+                        <input type="hidden" name="id" value="{{ f.vars.value.id }}" >
+                    </td>
+                
+                  </tr>
+                  <tr>
+                       <td>
+                           <button class="fermer" style="background-color: inherit"> <i class="fa fa-close" aria-hidden="true"></i> </button> 
+                       </td>
+                  </tr>
+    </table>
+                
+  {{form_end(f)}}
+
+</div>

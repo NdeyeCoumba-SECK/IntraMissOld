@@ -1,0 +1,37 @@
+utilisateurs_homepage:
+    path:     /
+    defaults: { _controller: UtilisateursBundle:Default:index }
+    
+utilisateurs_collaborateur:
+    path:     /collaborateur
+    defaults: { _controller: UtilisateursBundle:Default:collaborateur }
+    
+    
+utilisateurs_arh:
+    path:     /arh
+    defaults: { _controller: UtilisateursBundle:Default:assistantRH }
+
+utilisateurs_drh:
+    path:     /drh
+    defaults: { _controller: UtilisateursBundle:Default:directeurRH }
+
+utilisateurs_dg:
+    path:     /dg
+    defaults: { _controller: UtilisateursBundle:Default:dg }
+
+utilisateurs_admin:
+    path:     /admin
+    defaults: { _controller: UtilisateursBundle:Default:admin }
+
+utilisateurs_atos:
+    path:     /atos-externe
+    defaults: { _controller: UtilisateursBundle:Default:projet }
+
+utilisateurs_users:
+    path:     /users
+    defaults: { _controller: UtilisateursBundle:Default:users }
+    
+utilisateurs_enable_user:
+    path:     /enable
+    defaults: { _controller: UtilisateursBundle:Default:enableUser }
+    

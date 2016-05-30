@@ -1,0 +1,44 @@
+
+    <section>
+      <legend> Detail Projet</legend>
+      <table border="0" width="80%">
+         <tr>
+             <th>Reference : </th> <td> {{projet.reference}}</td> <th>Annonceur : </th> <td> {{projet.annonceur}}</td>
+             <th>Intitulé : </th> <td> {{projet.intitule}}</td> 
+         </tr>
+         <tr>
+             <th>Lieu : </th> <td> {{projet.lieu}}</td>
+             <th>Date de publication : </th> <td> {{projet.datePublication | date('d-m-y')}}</td>
+             <th>Durrée : </th> <td> {{projet.duree}}</td>
+         </tr>
+         <tr>
+             <th>Profile : </th> <td> {{projet.profil}}</td> 
+             <th>Description : </th> <td colspan="3"> {{projet.description}}</td>
+         </tr> 
+        </table> 
+    </section> 
+    
+         
+    <hr/>
+    
+     <section>
+       
+          <table class="table table-striped table-bordered table-condensed">
+              <tr> <th>DAS ID</th> <th>Nom</th>  <th>Prénom</th> <th>E-mail</th> </tr>
+            {% for collaborateur in collaborateurs%}
+                <tr>
+                    <td> {{collaborateur.user}}</td>
+                    <td> {{collaborateur.nom}}</td>
+                    <td> {{collaborateur.prenom}}</td>
+                    <td> {{collaborateur.email}}</td>
+                </tr>
+            {% endfor %}
+          </table> 
+        
+       {% if collaborateurs is empty %} 
+           <div> Aucune ressource affectée </div> 
+       {% endif %}
+    </section> 
+
+                         
+       

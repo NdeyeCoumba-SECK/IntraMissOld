@@ -1,0 +1,14 @@
+{% extends "::accueil.html.twig" %}
+
+{% block   body %}
+    {{ parent() }}
+    <h2> Espace Directeur RH </h2>
+    <a href="#" id="profile"> My Profile</a>
+   
+    <div id="divProfile">
+
+        {{ render(controller('FOSUserBundle:Profile:edit'))}}
+
+    </div>
+
+{%endblock  body %}

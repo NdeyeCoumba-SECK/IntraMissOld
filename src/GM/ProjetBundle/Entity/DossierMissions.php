@@ -1,0 +1,342 @@
+<?php
+namespace GM\ProjetBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * Projet
+ *
+ * @ORM\Table(name="DossierMissions")
+ * @ORM\Entity(repositoryClass="GM\ProjetBundle\Repository\ProjetRepository")
+ */
+class DossierMissions
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+   
+    /**
+    * @ORM\ManyToOne(targetEntity="GM\ProjetBundle\Entity\Projet", inversedBy="projetColab")
+    * @ORM\JoinColumn(name="projet_id", referencedColumnName="id")
+    */
+    private $projet;
+    
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="GM\ProjetBundle\Entity\Collaborateur", inversedBy="projetColab")
+    * @ORM\JoinColumn(name="collaborateur_id", referencedColumnName="id")
+    */
+    private $collaborateur;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="candidature", type="string", length=25, nullable=true)
+     */
+    private $candidature;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDepart", type="datetime", nullable=true)
+     */
+    private $dateDepart;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="duree", type="integer", nullable=true)
+     */
+    private $duree;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=25, nullable=true)
+     */
+    private $ville;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="visa", type="string", length=25, nullable=true)
+     */
+    private $visa;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="hotel", type="string", length=25, nullable=true)
+     */
+    private $hotel;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="chefProjet", type="string", length=50, nullable=true)
+     */
+    private $chefProjet;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="fonction", type="string", length=60, nullable=true)
+     */
+    private $fonction;
+
+    
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set candidature
+     *
+     * @param string $candidature
+     *
+     * @return DossierMissions
+     */
+    public function setCandidature($candidature)
+    {
+        $this->candidature = $candidature;
+
+        return $this;
+    }
+
+    /**
+     * Get candidature
+     *
+     * @return string
+     */
+    public function getCandidature()
+    {
+        return $this->candidature;
+    }
+
+    /**
+     * Set dateDepart
+     *
+     * @param \DateTime $dateDepart
+     *
+     * @return DossierMissions
+     */
+    public function setDateDepart($dateDepart)
+    {
+        $this->dateDepart = $dateDepart;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDepart
+     *
+     * @return \DateTime
+     */
+    public function getDateDepart()
+    {
+        return $this->dateDepart;
+    }
+
+    /**
+     * Set duree
+     *
+     * @param integer $duree
+     *
+     * @return DossierMissions
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return integer
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return DossierMissions
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set visa
+     *
+     * @param string $visa
+     *
+     * @return DossierMissions
+     */
+    public function setVisa($visa)
+    {
+        $this->visa = $visa;
+
+        return $this;
+    }
+
+    /**
+     * Get visa
+     *
+     * @return string
+     */
+    public function getVisa()
+    {
+        return $this->visa;
+    }
+
+    /**
+     * Set hotel
+     *
+     * @param string $hotel
+     *
+     * @return DossierMissions
+     */
+    public function setHotel($hotel)
+    {
+        $this->hotel = $hotel;
+
+        return $this;
+    }
+
+    /**
+     * Get hotel
+     *
+     * @return string
+     */
+    public function getHotel()
+    {
+        return $this->hotel;
+    }
+
+    /**
+     * Set projet
+     *
+     * @param \GM\ProjetBundle\Entity\Projet $projet
+     *
+     * @return DossierMissions
+     */
+    public function setProjet(\GM\ProjetBundle\Entity\Projet $projet = null)
+    {
+        $this->projet = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Get projet
+     *
+     * @return \GM\ProjetBundle\Entity\Projet
+     */
+    public function getProjet()
+    {
+        return $this->projet;
+    }
+
+    /**
+     * Set collaborateur
+     *
+     * @param \GM\ProjetBundle\Entity\Collaborateur $collaborateur
+     *
+     * @return DossierMissions
+     */
+    public function setCollaborateur(\GM\ProjetBundle\Entity\Collaborateur $collaborateur = null)
+    {
+        $this->collaborateur = $collaborateur;
+
+        return $this;
+    }
+
+    /**
+     * Get collaborateur
+     *
+     * @return \GM\ProjetBundle\Entity\Collaborateur
+     */
+    public function getCollaborateur()
+    {
+        return $this->collaborateur;
+    }
+
+    /**
+     * Set chefProjet
+     *
+     * @param string $chefProjet
+     *
+     * @return DossierMissions
+     */
+    public function setChefProjet($chefProjet)
+    {
+        $this->chefProjet = $chefProjet;
+
+        return $this;
+    }
+
+    /**
+     * Get chefProjet
+     *
+     * @return string
+     */
+    public function getChefProjet()
+    {
+        return $this->chefProjet;
+    }
+
+    /**
+     * Set fonction
+     *
+     * @param string $fonction
+     *
+     * @return DossierMissions
+     */
+    public function setFonction($fonction)
+    {
+        $this->fonction = $fonction;
+
+        return $this;
+    }
+
+    /**
+     * Get fonction
+     *
+     * @return string
+     */
+    public function getFonction()
+    {
+        return $this->fonction;
+    }
+}

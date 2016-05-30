@@ -1,0 +1,33 @@
+     
+     <section>
+       
+         <table  class="table table-striped table-hover table-condensed">
+              <tr> <th>DAS ID</th> <th>Nom</th>  <th>Prénom</th> <th>E-mail</th> <th>Ref. Projet</th> <th>Candidature</th> </tr>
+            {% for dossier in dossierMissions%}
+                <tr>
+                    <td> {{dossier.collaborateur.user}}</td>
+                    <td> {{dossier.collaborateur.nom}}</td>
+                    <td> {{dossier.collaborateur.prenom}}</td>
+                    <td> {{dossier.collaborateur.email}}</td>
+                    <td>
+                       {% set idProjet = dossier.projet.id %}
+                       {{dossier.projet.reference}}
+                       
+                    </td>
+                    <td align="center"> 
+                     <form class="formInfo" method="post"  action ="{{ path('gm_projet_suivi_infoColab') }}">
+                            <input type="hidden" name="idProjet" value="{{dossier.projet.id}}">
+                            <input type="hidden" name="idCollab" value="{{dossier.collaborateur.id}}">
+                            <button class="btn" type="submit"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button>
+                      </form>
+                    </td>
+                   
+                </tr>
+            {% endfor %}
+          </table> 
+        
+     
+    </section> 
+
+
+       

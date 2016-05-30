@@ -1,0 +1,279 @@
+{% extends "::accueil.html.twig" %}
+
+{% block   body %}
+    {{ parent() }}
+      <!-- Menu -->
+         {{ include("UtilisateursBundle:Default:menuCollaborateur.html.twig") }}
+     
+    <!--   Corps  -->
+
+  <div class="row corps">
+        <div class="col-sm-10 col-sm-offset-1" >
+            <h4 class="titre" style="text-align: right">My Profile </h4> <div class="ligne"> </div>
+        </div>
+      
+       <div class="col-sm-7 col-sm-offset-1">
+           
+         <!-- My Profile -->
+          <div id="divProfile" class="col-sm-12">
+             My Profile
+          </div>
+            <div id="popup" class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-1 col-sm-offset-11"> 
+                    <button class="fermer" title="Fermer"> <i class="fa fa-close" aria-hidden="true"></i></button> 
+                </div>
+              </div>
+
+               <div id="ressource">
+
+               </div>
+           </div>
+           
+      <!-- My Document -->
+          <div id="divMyDocument" class="col-sm-12">
+             My Document
+          </div>
+      
+      <!-- My Fees -->
+          <div id="divFees" class="col-sm-12">
+             My Fees
+          </div>
+      
+       <!-- My Comments -->
+          <div id="divMyComments" class="col-sm-12">
+             My Comments
+          </div>
+      
+       </div>
+        
+      <div class="col-sm-3">
+            <div class="panel panel-default">
+               <div class="panel-body"> Atos Images</div>
+               
+            </div>
+            <div class="panel panel-default">
+               <div class="panel-body"> Atos </div>
+               
+             </div>
+      </div>
+
+     
+   </div>
+      
+{% endblock  body %}
+
+{% block javascripts %}
+    {{ parent() }}
+     <script src="{{ asset('js/collaborateur.js') }}"></script>
+      <script >
+        $(function(){
+           
+            collaborateur();
+            $( ".fermer" ).click(function() {
+                $('#popup').css({'display':'none'});
+            });          
+       
+        
+      //************** My Document *************
+        
+             $( "#myDocument" ).click(function(e) {
+                    // e.preventDefault();
+                    $('.recharge').css({'display':'block'});
+                     $.ajax({
+                        type: "GET",
+                        url: "{{ path('gm_projet_suivi_mydocument') }}",
+                        cache: "false",
+                        dataType: "html",
+                        success: function(result){
+                        $('.recharge').css({'display':'none'});
+                        $("#divMyDocument").html(result); 
+                         modification();
+                         saveMyDocument();
+                    }
+                 }); 
+                 
+                });
+                
+                   function modification()
+                    {
+                       $(".modif").click(function (e) {
+                        //e.preventDefault();
+                        $('.champ').removeAttr('disabled');
+                        $('.ville').focus();
+                               
+                       });  
+                    }
+               
+                     function saveMyDocument()
+                    {
+                       $(".myDoc").submit(function (e) {
+                            e.preventDefault();
+                            $('.recharge').css({'display':'block'});$(".results").text('');
+                            var values = {};
+                                $(this).serializeArray().forEach(function (field) {
+                                    values[field.name] = field.value;
+                                });
+                                
+                                 $.ajax({
+                                    url: "{{ path('gm_projet_suivi_savemydocument') }}",
+                                    data: values,
+                                    type: 'post'
+                                }).done(function (data) {
+                                   $('.recharge').css({'display':'none'});
+                                   $(".results").text(data);
+                                   $('.champ').attr('disabled','disabled');
+                                 
+                                }).fail(function (data) {
+                                   // erreur
+                                });
+                               
+                        });  
+                    }
+                
+ 
+
+//************** My Fees *************
+        
+             $( "#myFees" ).click(function(e) {
+                    // e.preventDefault();
+                    $('.recharge').css({'display':'block'});
+                     $.ajax({
+                        type: "GET",
+                        url: "{{ path('gm_projet_liste') }}",
+                        cache: "false",
+                        dataType: "html",
+                        success: function(result){
+                        $('.recharge').css({'display':'none'});
+                        $("#divFees").html(result); 
+                        formFee();
+                        piece();
+                        formModifFee();
+                    }
+                 }); 
+                 
+                });    
+               
+             function formFee()
+              {
+                       $(".addFee").click(function (e) {
+                            e.preventDefault();
+                            
+                             $('.recharge').css({'display':'block'});
+                                 $.ajax({
+                                    url: "{{ path('gm_projet_ajout') }}",
+                                    type: 'get'
+                                }).done(function (data) {
+                                   $('.recharge').css({'display':'none'});
+                                   $('.formFee').css({'display':'block'});
+                                   $(".formFee").html(data); 
+                                    addFee();
+                                  
+                                }).fail(function (data) {
+                                   // erreur
+                                });
+                               
+                        });  
+               }
+                 
+                 function addFee()
+                    {
+                       $(".formFee .addFee").submit(function (e) {
+                            e.preventDefault();var $form = $(this);
+                            var $form = $(this);
+                            var formdata = (window.FormData) ? new FormData($form[0]) : null;
+                            var data = (formdata !== null) ? formdata : $form.serialize();
+                             $('.recharge').css({'display':'block'});
+          
+                               $.ajax({
+                                    url: "{{ path('gm_projet_ajout') }}",
+                                    data: data,
+                                    type: 'post',
+                                    processData: false,
+                                    contentType: false
+                                }).done(function (data) {
+                                   $('.recharge').css({'display':'none'});
+                                   $(".results").text(data); 
+                                   $(".btn-success").attr('disabled','disabled');
+                                    //addFee();
+                                  
+                                }).fail(function (data) {
+                                   // erreur
+                                });  
+                        });  
+                        
+                                $( ".fermer" ).click(function() {
+                                    $('.formFee').css({'display':'none'});
+                                });
+                    }
+                    
+                  function piece ()
+                  {
+                    
+                     $(".formPiece").click(function (e) {
+                        e.preventDefault();
+                        var val=$(this).find('[type="hidden"]').val();
+                        var param='uploads/brochures/'+val;  
+                        $('#popup').css({'display':'block'});
+                        $("#ressource").html('<img src="'+param+'" class="piece">');
+                      
+                    });
+                 }
+                 
+                 function formModifFee()
+              {
+                       $(".formModifFee").click(function (e) {
+                            e.preventDefault();
+                            var data=$(this).serialize();
+                             $('.recharge').css({'display':'block'});
+                                 $.ajax({
+                                    url: "{{ path('gm_projet_modification') }}",
+                                    type: 'post',
+                                    data: data
+                                }).done(function (data) {
+                                   $('.recharge').css({'display':'none'});
+                                   $('.formFee').css({'display':'block'});
+                                   $(".formFee").html(data); 
+                                   modifFee();
+                                  
+                                }).fail(function (data) {
+                                   // erreur
+                                });
+                               
+                        });  
+               }
+                    
+              function modifFee()
+                    {
+                       $(".formFee .modifFee").submit(function (e) {
+                            e.preventDefault();var $form = $(this);
+                            var $form = $(this);
+                            var formdata = (window.FormData) ? new FormData($form[0]) : null;
+                            var data = (formdata !== null) ? formdata : $form.serialize();
+                             $('.recharge').css({'display':'block'});
+          
+                               $.ajax({
+                                    url: "{{ path('gm_projet_modification') }}",
+                                    data: data,
+                                    type: 'post',
+                                    processData: false,
+                                    contentType: false
+                                }).done(function (data) {
+                                   $('.recharge').css({'display':'none'});
+                                   $(".results").text(data); 
+                                   $(".btn-success").attr('disabled','disabled');
+                                    //addFee();
+                                  
+                                }).fail(function (data) {
+                                   // erreur
+                                });
+                               
+                        });  
+                            $( ".fermer" ).click(function() {
+                                $('.formFee').css({'display':'none'});
+                            });          
+                    }     
+        
+    });
+      </script>
+{% endblock %}
